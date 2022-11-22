@@ -1,4 +1,7 @@
 summary_blog <- function(lr){
+  x<-lr[[13]]
+  y<-lr[[12]]
+
   print(paste("blog_lm(formula = ",lr[[2]]))
   res <- quantile(lr[[7]])
   names(res) <- c("Min","1Q","Median","3Q","Max")
