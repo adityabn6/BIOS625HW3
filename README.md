@@ -15,7 +15,7 @@ The package can then be used to fit a Linear Regression model estimated with the
 ## Dependencies
 
 * R
-* data.table, tibble, stringr, fastDummies
+* data.table, tibble, stringr, fastDummies, bench
 
 ## Functions
 
