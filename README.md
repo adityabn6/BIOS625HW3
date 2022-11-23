@@ -1,7 +1,7 @@
 # BIOS625HW3
 # Linear Regression Package
 
-The package enables fitting a Linear Regression model for a continous response variable with both continous and/or categorical data
+The package enables fitting a Linear Regression model for a continous response variable against both continous and/or categorical covariates
 
 ## Description
 
