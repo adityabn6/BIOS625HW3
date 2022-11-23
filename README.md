@@ -1,5 +1,11 @@
 # BIOS625HW3
+
+<!-- badges: start -->
+ [![Codecov test coverage](https://codecov.io/gh/adityabn6/BIOS625HW3/branch/main/graph/badge.svg)](https://app.codecov.io/gh/adityabn6/BIOS625HW3?branch=main)
+<!-- badges: end -->
 # Linear Regression Package
+
+
 
 The package enables fitting a Linear Regression model for a continous response variable against both continous and/or categorical covariates
 
