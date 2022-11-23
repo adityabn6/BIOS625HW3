@@ -5,60 +5,39 @@ The package enables fitting a Linear Regression model for a continous response v
 
 ## Description
 
-Given an dataframe with N rows and p columns, we fit a Linear regression model on a chosen response variable from the dataframe and any set of n covariates. The model is given by\  
-$Y_i = X_1 + X_2 + ... + X_n$\  
+Given an dataframe with N rows and p columns, we fit a Linear regression model on a chosen response variable from the dataframe and any set of n covariates. 
 
-## Getting Started
+The model is given by:
+$Y_i = X_1 + X_2 + ... + X_n + error_i$
 
-### Dependencies
+## Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* R
+* data.table, tibble, stringr, fastDummies
 
-### Installing
+## Functions
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+*lm_blog* :
+*lm_blog* takes an equation and a dataframe as arguments to fit a linear regression model represented by the equation.
+The dataframe should contain the response variable and the covariates present in the equation as column names.The covariates are treated as continous or categorical. *lm_blog* automatically converts any non numeric data time into dummy variables using one-got encoding.
+lm_blog then fits the model using the method of least squares
 
-### Executing program
+*sig_i* :
+Checks the significance of p-values of the coefficient estimates from the fitted model and returns an array, where each element is the p value appended with a symbol denoting it's significant
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+*summary_blog* :
+Displays the result summaries of the results of a linear regression model fitted using *lm_blog*
 
-## Help
+## Executing program
+Given a dataframe *df* with N rows and P columns
+Let column Y be the response variable and X1 & X2 be covariates. 
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+The linear regression model is fitted using
+lr <- lm_blog(Y ~ X1 + X2,df)
+
+The results table is generated using
+summary_blog(lr)
 
 ## Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+Aditya Jalin
