@@ -1,11 +1,12 @@
 # BIOS625HW3
 # Project Title
 
-Simple overview of use/purpose.
+The package enables fitting a Linear Regression model for a continous response variable with both continous and/or categorical data
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Given an dataframe with N rows and p columns, we fit a Linear regression model on a chosen response variable from the dataframe and any set of n covariates. The model is given by\  
+$Y_i = X_1 + X_2 + ... + X_n$\  
 
 ## Getting Started
 
