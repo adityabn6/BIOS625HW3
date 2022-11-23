@@ -25,8 +25,8 @@ lm_blog returns a list "lr". The list "lr" contains the following components:\cr
   \emph{dfy} \tab No: of observations - No: of parameters.\cr
   \emph{dfx} \tab No: of parameters - 1.\cr
   \emph{mse} \tab Mean Squared Error.\cr
-  \emph{ssy} \tab Total sum of squares.
-  \emph{y} \tab Response variable.
+  \emph{ssy} \tab Total sum of squares.\cr
+  \emph{y} \tab Response variable.\cr
   \emph{x} \tab Covariates.
 }
 }
@@ -38,6 +38,7 @@ lm_blog takes an equation and a dataframe as arguments to fit a linear regressio
 The dataframe should contain the response variable and the covariates present in the equation as column names.\cr The covariates are treated as continous or categorical. lm_blog automatically converts any non numeric data time into dummy variables using one-got encoding.\cr lm_blog then fits the model using the method of least squares
 }
 \examples{
-library(datasets)\cr data(iris)\cr lm_blog(Sepal.Length ~ Sepal.Width + Petal.Length + Species,iris)\cr
-lm_blog(Sepal.Length ~ Petal.Width + Petal.Length + Species,iris)
+library(datasets)\crdata(iris)\crlm_blog(Sepal.Length ~ Sepal.Width + Petal.Length + Species,iris)
+lr <- lm_blog(Sepal.Length ~ Petal.Width + Petal.Length + Species,iris)
+summary_blog(lr)
 }

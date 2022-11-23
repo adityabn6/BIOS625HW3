@@ -16,4 +16,113 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(BIOS625HW)
+library(datasets)
+library(fastDummies)
+
+data(mtcars)
+data(iris)
+data("ToothGrowth")
+data("USArrests")
+```
+# Package work flow
+We will provide an example using the **iris** dataset. The goal is to fit a linear regression model to study the association between Sepal length and\ 
+Sepal width\ 
+Petal length\ 
+Petal.Width\ 
+Species\ 
+```{r}
+#Looking at the iris dataset
+head(iris)
+```
+First we fit the model using *lm_blog*\  
+
+
+Here we will pass *Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Species* and *iris* to *lm_blog* as save the model object as *lr*\  
+
+```{r}
+lr_iris <- lm_blog(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Species,iris)
+```
+
+Next we pass *lr_iris* to *summary_blog* to generate the results\  
+
+```{r}
+summary_blog(lr_iris)
+
+```
+# Test cases
+## SLR - Covariate is continous
+```{r}
+lr_tg <- lm_blog(len ~ dose,ToothGrowth)
+summary_blog(lr_tg)
+
+```
+
+## SLR - Covariate is continous
+```{r}
+lr_tg <- lm_blog(len ~ supp,ToothGrowth)
+summary_blog(lr_tg)
+```
+
+
+## MLR - Covariates are all continous
+```{r}
+lr_us <- lm_blog(Murder ~ Assault + UrbanPop + Rape,USArrests)
+summary_blog(lr_us)
+
+```
+
+## MLR - Covariates are both continous and categorical
+```{r}
+lr_iris <- lm_blog(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Species,iris)
+summary_blog(lr_iris)
+
+```
+
+## If NA is preset in the dataset
+
+```{r}
+x1<-sample(c(NA,5,2),20,replace=TRUE)
+x2<-sample(c(NA,10,100),20,replace=TRUE)
+df1<-data.frame(x1,x2)
+
+lr_na <- lm_blog(x1 ~ x2,df1)
+summary_blog(lr_na)
+```
+
+# Comparing lm_blog() with lm() from the stats library
+
+```{r}
+#Fitted model using lm()
+
+lr_lm <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Species,iris)
+
+```
+
+Checking the coefficient estimates
+
+```{r}
+all.equal(as.numeric(lr_iris[[3]]),as.numeric(lr_lm$coefficients))
+
+```
+
+Checking the estimated fitted values
+
+```{r}
+all.equal(as.numeric(lr_iris[[4]]),as.numeric(lr_lm$fitted.values))
+
+```
+
+# Comparing summary_blog() with summary() from the base R
+```{r}
+#Between models fitted using lm_blog() and lm()
+summary(lr_lm)
+summary_blog(lr_iris)
+
+```
+
+```{r}
+#Between the same model fitted using lm_blog()
+summary(lr_lm)
+summary_blog(lr_iris)
+
 ```

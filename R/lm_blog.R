@@ -18,16 +18,19 @@
 #'   \emph{dfy} \tab No: of observations - No: of parameters.\cr
 #'   \emph{dfx} \tab No: of parameters - 1.\cr
 #'   \emph{mse} \tab Mean Squared Error.\cr
-#'   \emph{ssy} \tab Total sum of squares.
-#'   \emph{y} \tab Response variable.
+#'   \emph{ssy} \tab Total sum of squares.\cr
+#'   \emph{y} \tab Response variable.\cr
 #'   \emph{x} \tab Covariates.
 #' }
 #'
 #' @examples
-#' library(datasets)\cr data(iris)\cr lm_blog(Sepal.Length ~ Sepal.Width + Petal.Length + Species,iris)\cr
-#' lm_blog(Sepal.Length ~ Petal.Width + Petal.Length + Species,iris)
+#' library(datasets)\crdata(iris)\crlm_blog(Sepal.Length ~ Sepal.Width + Petal.Length + Species,iris)
+#' lr <- lm_blog(Sepal.Length ~ Petal.Width + Petal.Length + Species,iris)
+#' summary_blog(lr)
 
 lm_blog <- function(eqn,dataset){
+
+  dataset<-na.omit(dataset)
   eqn <- as.character(substitute((eqn)))[2]
   y <- dataset[strsplit(eqn," ~")[[1]][1]]
   x <- dataset[strsplit(eqn," ")[[1]][seq(3,length(strsplit(eqn," ")[[1]]),2)]]
