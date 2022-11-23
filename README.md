@@ -1,5 +1,5 @@
 # BIOS625HW3
-# Project Title
+# Linear Regression Package
 
 The package enables fitting a Linear Regression model for a continous response variable with both continous and/or categorical data
 
@@ -9,6 +9,8 @@ Given an dataframe with N rows and p columns, we fit a Linear regression model o
 
 The model is given by:
 $Y_i = X_1 + X_2 + ... + X_n + error_i$
+
+The package can then be used to fit a Linear Regression model estimated with the method of least squares and display the results
 
 ## Dependencies
 
